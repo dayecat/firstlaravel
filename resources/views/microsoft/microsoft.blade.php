@@ -6,9 +6,13 @@
     <title>微軟SCSS版本</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="./css/hamburger.css" />
-    <link rel="stylesheet" href="./css/microsoft.css" />
-    <link rel="icon" href="./microsoft.ico" />
+    {{-- <link rel="stylesheet" href="./css/hamburger.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('css/hamburger.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/microsoft.css') }}" />
+    <link rel="icon" href="{{ asset('image/microsoft.ico') }}" />
+    @vite('resources/css/app.css')
+    <style>
+    </style>
   </head>
   <body>
     <header>
@@ -20,7 +24,9 @@
           <div id="line-3" class="line"></div>
         </label>
         <div id="nav-logo">
-       <a href="/"><img src="{{ asset('image/logo.png') }}" alt="" /></a>
+          <a href="/">
+            <img src="{{ asset('image/logo.png') }}" alt="" />
+          </a>
         </div>
         <div id="nav-2">
           <div class="6-link"><a href="#">Microsoft 365</a></div>
@@ -203,7 +209,10 @@
               <span id="signin">登入</span>
               <!-- <img src="./img/login.svg" alt=""> -->
               <!-- <div id="signin"><span>登入</span></div> -->
-              <div id="login-img"><img src="./img/login.svg" alt="" /></div>
+              <div id="login-img">
+                {{-- <img src="./img/login.svg" alt="" /> --}}
+                <img src="{{ asset('image/login.svg') }}" alt="" />
+              </div>
             </a>
           </div>
           <div id="menu">
@@ -286,11 +295,11 @@
                   </div>
                 </div>
                 <picture>
-                  <source media="(min-width: 1400px)" srcset="./img/swiper/02-1-1399x600.avif"/>
-                  <source media="(min-width: 1084px)" srcset="./img/swiper/02-1-1083x600.avif"/>
-                  <source media="(min-width: 860px)" srcset="./img/swiper/02-1-859x540.avif"/>
-                  <source media="(min-width: 540px)" srcset="./img/swiper/02-1-859x540.avif"/>
-                  <img  src="./img/swiper/02-1-1920x600.avif"  alt="" width="100%" />
+                  <source media="(min-width: 1400px)" srcset="{{ asset('image/swiper/02-1-1399x600.avif') }}"/>
+                  <source media="(min-width: 1084px)" srcset="{{ asset('image/swiper/02-1-1083x600.avif') }}"/>
+                  <source media="(min-width: 860px)" srcset="{{ asset('image/swiper/02-1-859x540.avif') }}"/>
+                  <source media="(min-width: 540px)" srcset="{{ asset('image/swiper/02-1-859x540.avif') }}"/>
+                  <img  src="{{ asset('image/swiper/02-1-1920x600.avif') }}"  alt="" width="100%" />
                 </picture>
               </div>
               <div class="swiper-slide">
@@ -306,11 +315,11 @@
                   </div>
                 </div>
                 <picture>
-                  <source media="(min-width: 1400px)"   srcset="./img/swiper/VP4-1399x600.avif" />
-                  <source media="(min-width: 1084px)"  srcset="./img/swiper/VP3-1083x600.avif" />
-                  <source media="(min-width: 860px)"   srcset="./img/swiper/VP2-859x540.avif" />
-                  <source media="(min-width: 540px)"    srcset="./img/swiper/VP2-859x540.avif" />
-                  <img     src="./img/swiper/VP2-859x540.avif" alt=""   width="100%"/>
+                  <source media="(min-width: 1400px)" srcset="{{ asset('image/swiper/VP4-1399x600.avif') }}" />
+                  <source media="(min-width: 1084px)" srcset="{{ asset('image/swiper/VP3-1083x600.avif') }}" />
+                  <source media="(min-width: 860px)" srcset="{{ asset('image/swiper/VP2-859x540.avif') }}" />
+                  <source media="(min-width: 540px)" srcset="{{ asset('image/swiper/VP2-859x540.avif') }}" />
+                  <img src="{{ asset('image/swiper/VP2-859x540.avif') }}" alt="" width="100%"/>
                 </picture>
               </div>
             </div>
@@ -327,111 +336,65 @@
         <ul>
           <li>
             <img
-              src="./img/gldn-Quick-Link-Icon-80x80-Microsoft-365.webp"
+              src="{{ asset('image/gldn-Quick-Link-Icon-80x80-Microsoft-365.webp') }}"
               alt=""
             />
             <a href="#">選擇您的 Microsoft 365</a>
           </li>
           <li>
-            <img src="./img/icon-LL-surface-kickstand-120x120.webp" alt="" />
+            <img src="{{ asset('image/icon-LL-surface-kickstand-120x120.webp') }}" alt="" />
             <a href="#">選購 Surface 裝置</a>
           </li>
           <li>
             <img
-              src="./img/gldn-Quick-Link-Icon-80x80-Microsoft-365.webp"
+              src="{{ asset('image/gldn-Quick-Link-Icon-80x80-Microsoft-365.webp') }}"
               alt=""
             />
             <a href="#">取得 Windows 11</a>
           </li>
         </ul>
       </section>
+      @dd($data2)
       <section class="four-box">
+        @foreach ($news123 as $item)
         <div class="col-8">
           <a href="#" class="cta">
-            <img src="./img/gldn-XSX-CP-Xbox-Series-X.webp" alt="#" />
+            <img src="{{ $item->img_path }}" alt="#" />
             <div class="card-box">
-              <h3>Xbox Series X</h3>
-              <p>有史以來最快、最強大的 Xbox。</p>
-            </div>
-            <div class="card-footer">
-              <div class="link-group">選購 Xbox Series X</div>
+                <h3>{{ $item->title }}</h3>
+                <p>{{ $item->my_content }}</p>
             </div>
           </a>
         </div>
-        <div class="col-8">
-          <a href="#" class="cta">
-            <img src="./img/Content-Card-Bing-AI-No-Text.webp" alt="#" />
-            <div class="card-box">
-              <h3>隆重推出新版Bing</h3>
-              <p>
-                問真正的問題。 聊天和創作。 從您的 AI 網路副駕駛獲得更好的答案。
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="link-group">了解新版Bing</div>
-            </div>
-          </a>
-        </div>
-        <div class="col-8">
-          <a href="#" class="cta">
-            <img
-              src="./img/gldn-XGP-Game-Pass-Ultimate-Characters-06102010-1.avif"
-              alt="#"
-            />
-            <div class="card-box">
-              <h3>Xbox Game Pass Ultimate</h3>
-              <p>
-                Xbox Live Gold 以及數百款高品質主機遊戲和電腦遊戲。
-                與好友同樂，並探索下一個最愛遊戲。
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="link-group">立即加入</div>
-            </div>
-          </a>
-        </div>
-        <div class="col-8">
-          <a href="#" class="cta">
-            <img src="./img/gldn-CP-Windows11-GlobalLaunch.jpg" alt="#" />
-            <div class="card-box">
-              <h3>專為今天和明天的生活而設計</h3>
-              <p>
-                新一代遊戲、 您的目標、 親朋好友。 Windows 11
-                是為了讓您更貼近所喜愛的一切。
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="link-group">查看您的電腦是否準備就緒</div>
-            </div>
-          </a>
-        </div>
+        @endforeach
+
       </section>
       <section id="layout">
         <div class="highlight">
           <picture>
             <source
               media="(min-width: 1400px)"
-              srcset="./img/swiper/gldn-MSFT-hero-Edge_VP5-1596x600.avif"
+              srcset="{{ asset('swiper/gldn-MSFT-hero-Edge_VP5-1596x600.avif') }}"
             />
             <source
               media="(min-width: 1084px)"
-              srcset="./img/swiper/gldn-MSFT-hero-Edge_VP3-1083x600.avif"
+              srcset="{{ asset('swiper/gldn-MSFT-hero-Edge_VP3-1083x600.avif') }}"
             />
             <source
               media="(min-width: 860px)"
-              srcset="./img/swiper/gldn-MSFT-hero-Edge_VP2-859x540.avif"
+              srcset="{{ asset('swiper/gldn-MSFT-hero-Edge_VP2-859x540.avif') }}"
             />
             <source
               media="(min-width: 540px)"
-              srcset="./img/swiper/gldn-MSFT-hero-Edge_VP2-859x540.avif"
+              srcset="{{ asset('swiper/gldn-MSFT-hero-Edge_VP2-859x540.avif') }}"
             />
             <img
-              src="./img/swiper/gldn-MSFT-hero-Edge_VP5-1596x600.avif"
+              src="{{ asset('swiper/gldn-MSFT-hero-Edge_VP5-1596x600.avif') }}"
               alt=""
               width="100%"
             />
           </picture>
-          <div class="card-introduce left">
+          <div class="card-introduce left hidden">
             <h2>Microsoft Edge</h2>
             <div class="mb-4">
               在您瀏覽時提供世界級的效能，以及更多的隱私、更充足的生產力與更高的價值
@@ -449,12 +412,12 @@
           </div>
         </div>
       </section>
-      <div class="h2"><h2>適用於商務</h2></div>
-      <section class="four-box">
+      <div class="h2 hidden"><h2>適用於商務</h2></div>
+      <section class="four-box !hidden">
         <div class="col-8">
           <a href="#" class="cta">
             <img
-              src="./img/gldn-Surf-CP-SurfaceFamilyForBusiness.avif"
+              src="{{ asset('image/gldn-Surf-CP-SurfaceFamilyForBusiness.avif') }}"
               alt="#"
             />
             <div class="card-box">
@@ -468,7 +431,7 @@
         </div>
         <div class="col-8">
           <a href="#" class="cta">
-            <img src="./img/gldn-CP-Microsoft-Teams-Commercial.webp" alt="#" />
+            <img src="{{ asset('image/gldn-CP-Microsoft-Teams-Commercial.webp') }}" alt="#" />
             <div class="card-box">
               <h3>免費取得 Microsoft Teams</h3>
               <p>線上會議、聊天和共用雲端儲存空間，盡在一處。</p>
@@ -481,7 +444,7 @@
 
         <div class="col-8">
           <a href="#" class="cta">
-            <img src="./img/Content-Card-Windows-11-Business.jpg" alt="#" />
+            <img src="{{ asset('image/Content-Card-Windows-11-Business.jpg') }}" alt="#" />
             <div class="card-box">
               <h3>商務用 Windows 11</h3>
               <p>
@@ -498,7 +461,7 @@
         <div class="col-8">
           <a href="#" class="cta">
             <img
-              src="./img/Content-Card-Microsoft-365-For-Business-Woman-Teams-Call.webp"
+              src="{{ asset('image/Content-Card-Microsoft-365-For-Business-Woman-Teams-Call.webp') }}"
               alt="#"
             />
             <div class="card-box">
@@ -517,8 +480,8 @@
       <section id="socialfollow">
         <div id="socialfollow-text">關注Microsoft</div>
         <ul>
-          <img src="./img/Facebook 2x.avif" alt="" />
-          <img src="./img/YouTube 2x.webp" alt="" />
+          <img src="{{ asset('image/Facebook 2x.avif') }}" alt="" />
+          <img src="{{ asset('image/YouTube 2x.webp') }}" alt="" />
         </ul>
       </section>
       <section id="back-to-top">

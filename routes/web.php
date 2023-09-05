@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MicrosoftController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/microsoft',[microsoftController::class,'microsoft']);
+Route::get('/microsoft',[MicrosoftController::class,'index']);
